@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Leading1 Component applies additional HTML attributes 1`] = `
+<h1
+  className="text-4xl text-center my-4 "
+  id="custom-id"
+>
+  Heading with custom ID
+</h1>
+`;
+
+exports[`Leading1 Component applies custom class name 1`] = `
+<h1
+  className="text-4xl text-center my-4 custom-class"
+>
+  Custom Heading
+</h1>
+`;
+
+exports[`Leading1 Component renders children correctly 1`] = `
+<h1
+  className="text-4xl text-center my-4 "
+>
+  Hello, World!
+</h1>
+`;
+
+exports[`Leading2 Component applies additional HTML attributes 1`] = `
+<h2
+  className="text-3xl text-center my-3.5 "
+  id="custom-id"
+>
+  Heading with custom ID
+</h2>
+`;
+
+exports[`Leading2 Component applies custom class name 1`] = `
+<h2
+  className="text-3xl text-center my-3.5 custom-class"
+>
+  Custom Heading
+</h2>
+`;
+
+exports[`Leading2 Component renders children correctly 1`] = `
+<h2
+  className="text-3xl text-center my-3.5 "
+>
+  Hello, World!
+</h2>
+`;
+
+exports[`Leading3 Component applies additional HTML attributes 1`] = `
+<h3
+  className="text-2xl text-center my-3 "
+  id="custom-id"
+>
+  Heading with custom ID
+</h3>
+`;
+
+exports[`Leading3 Component applies custom class name 1`] = `
+<h3
+  className="text-2xl text-center my-3 custom-class"
+>
+  Custom Heading
+</h3>
+`;
+
+exports[`Leading3 Component renders children correctly 1`] = `
+<h3
+  className="text-2xl text-center my-3 "
+>
+  Hello, World!
+</h3>
+`;

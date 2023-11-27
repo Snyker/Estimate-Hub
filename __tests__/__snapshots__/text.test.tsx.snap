@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpanDot Component applies custom class 1`] = `
+<p
+  className="text-xs text-gray-11 w-full custom-class false"
+>
+  <span
+    className="mr-2 dot false"
+  />
+  Some text
+</p>
+`;
+
+exports[`SpanDot Component applies custom dot class and text class when isValid is true 1`] = `
+<p
+  className="text-xs text-gray-11 w-full  custom-valid-class"
+>
+  <span
+    className="mr-2 dot custom-dot-class"
+  />
+  Some text
+</p>
+`;
+
+exports[`SpanDot Component applies dot class and text class when isValid is true 1`] = `
+<p
+  className="text-xs text-gray-11 w-full  text-success"
+>
+  <span
+    className="mr-2 dot dot-success"
+  />
+  Some text
+</p>
+`;
+
+exports[`SpanDot Component renders correctly with default props 1`] = `
+<p
+  className="text-xs text-gray-11 w-full  false"
+>
+  <span
+    className="mr-2 dot false"
+  />
+  Some text
+</p>
+`;

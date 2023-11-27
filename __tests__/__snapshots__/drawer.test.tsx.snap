@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer Component Drawer applies custom class 1`] = `
+<div
+  className="drawer  custom-class"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer applies side class correctly 1`] = `
+<div
+  className="drawer drawer-right "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer does not close when stopClose is true 1`] = `
+<div
+  className="drawer  "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer handles className collision between props and side class 1`] = `
+<div
+  className="drawer  drawer-right"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer renders additional HTML attributes 1`] = `
+<div
+  className="drawer  "
+  data-testid="drawer"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer renders as open when open is true 1`] = `
+<div
+  className="drawer  "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer renders content based on children 1`] = `
+<div
+  className="drawer  "
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Drawer Component Drawer renders correctly with default props 1`] = `
+<div
+  className="drawer  "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component Drawer renders correctly with multiple complex props 1`] = `
+<div
+  className="drawer drawer-bottom custom-class"
+  onClick={[MockFunction]}
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Drawer Component DrawerBody applies custom class 1`] = `
+<div
+  className="drawer-content flex flex-col h-full custom-class"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerBody renders additional HTML attributes 1`] = `
+<div
+  className="drawer-content flex flex-col h-full "
+  data-testid="drawer-body"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerBody renders content based on children 1`] = `
+<div
+  className="drawer-content flex flex-col h-full "
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Drawer Component DrawerBody renders correctly with default props 1`] = `
+<div
+  className="drawer-content flex flex-col h-full "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerBody renders correctly with multiple complex props 1`] = `
+<div
+  className="drawer-content flex flex-col h-full custom-class"
+  data-testid="drawer-body"
+  onClick={[Function]}
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Drawer Component DrawerFooter applies custom class 1`] = `
+<div
+  className="drawer-footer custom-class"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerFooter renders additional HTML attributes 1`] = `
+<div
+  className="drawer-footer "
+  data-testid="drawer-footer"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerFooter renders correctly with default props 1`] = `
+<div
+  className="drawer-footer "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerFooter renders correctly with multiple complex props 1`] = `
+<div
+  className="drawer-footer custom-class"
+  data-testid="drawer-footer"
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Drawer Component DrawerHeader applies custom class 1`] = `
+<div
+  className="drawer-header custom-class"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerHeader renders additional HTML attributes 1`] = `
+<div
+  className="drawer-header "
+  data-testid="drawer-header"
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerHeader renders correctly with default props 1`] = `
+<div
+  className="drawer-header "
+>
+  Drawer content
+</div>
+`;
+
+exports[`Drawer Component DrawerHeader renders correctly with multiple complex props 1`] = `
+<div
+  className="drawer-header custom-class"
+  data-testid="drawer-header"
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;

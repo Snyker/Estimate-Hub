@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor Component applies custom class 1`] = `
+<a
+  className="link link-underline-hover link-primary text-sm custom-class"
+  href="/example"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  Click me
+</a>
+`;
+
+exports[`Anchor Component applies next/link properties correctly 1`] = `
+<a
+  className="link link-underline-hover link-primary text-sm "
+  href="/example"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  Click me
+</a>
+`;
+
+exports[`Anchor Component renders correctly with default props 1`] = `
+<a
+  className="link link-underline-hover link-primary text-sm "
+  href="/example"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  Click me
+</a>
+`;

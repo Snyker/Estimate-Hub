@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Components Card applies custom class 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] custom-class"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components Card renders additional HTML attributes 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] "
+  data-testid="card"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components Card renders content based on children 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] "
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components Card renders correctly with default props 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] "
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components Card renders correctly with multiple complex props 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] custom-class"
+  data-testid="card"
+  onClick={[Function]}
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardAdd renders additional HTML attributes 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] "
+>
+  <div
+    className="card-body h-full justify-center items-center"
+  >
+    <div
+      className="card-header "
+    >
+      <span>
+        Add Card
+      </span>
+    </div>
+    <svg
+      fill="currentColor"
+      height={64}
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 448 512"
+      width={64}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Card Components CardAdd renders correctly with default props 1`] = `
+<div
+  className="card hover:scale-105 active:scale-95 hover:bg-gray-5 transition ease-in-out cursor-pointer md:max-h-[14rem] "
+>
+  <div
+    className="card-body h-full justify-center items-center"
+  >
+    <div
+      className="card-header "
+    >
+      <span>
+        Add Card
+      </span>
+    </div>
+    <svg
+      fill="currentColor"
+      height={64}
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        {
+          "color": undefined,
+        }
+      }
+      viewBox="0 0 448 512"
+      width={64}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Card Components CardBody applies custom class 1`] = `
+<div
+  className="card-body custom-class"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardBody renders additional HTML attributes 1`] = `
+<div
+  className="card-body "
+  data-testid="card-body"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardBody renders content based on children 1`] = `
+<div
+  className="card-body "
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardBody renders correctly with default props 1`] = `
+<div
+  className="card-body "
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardBody renders correctly with multiple complex props 1`] = `
+<div
+  className="card-body custom-class"
+  data-testid="card-body"
+  onClick={[Function]}
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardFooter applies custom class 1`] = `
+<div
+  className="card-footer custom-class"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardFooter renders additional HTML attributes 1`] = `
+<div
+  className="card-footer flex-col items-start"
+  data-testid="card-footer"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardFooter renders content based on children 1`] = `
+<div
+  className="card-footer flex-col items-start"
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardFooter renders correctly with default props 1`] = `
+<div
+  className="card-footer flex-col items-start"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardFooter renders correctly with multiple complex props 1`] = `
+<div
+  className="card-footer custom-class"
+  data-testid="card-footer"
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardHeader applies custom class 1`] = `
+<div
+  className="card-header custom-class"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardHeader renders additional HTML attributes 1`] = `
+<div
+  className="card-header "
+  data-testid="card-header"
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardHeader renders content based on children 1`] = `
+<div
+  className="card-header "
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;
+
+exports[`Card Components CardHeader renders correctly with default props 1`] = `
+<div
+  className="card-header "
+>
+  Card content
+</div>
+`;
+
+exports[`Card Components CardHeader renders correctly with multiple complex props 1`] = `
+<div
+  className="card-header custom-class"
+  data-testid="card-header"
+>
+  <div>
+    Custom content
+  </div>
+</div>
+`;

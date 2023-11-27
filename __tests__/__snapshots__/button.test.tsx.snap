@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component applies custom class 1`] = `
+<button
+  className="btn btn-primary custom-class"
+  type="button"
+>
+  Click me
+</button>
+`;
+
+exports[`Button Component renders correctly with children 1`] = `
+<button
+  className="btn btn-primary "
+  type="button"
+>
+  Click me
+</button>
+`;
+
+exports[`ButtonIcon Component applies custom class 1`] = `
+<button
+  className="btn gap-2 custom-class flex-row"
+  type="button"
+>
+  Click me
+</button>
+`;
+
+exports[`ButtonIcon Component applies icon on the left by default 1`] = `
+<button
+  className="btn gap-2  flex-row"
+  type="button"
+>
+  <span>
+    🚀
+  </span>
+  Click me
+</button>
+`;
+
+exports[`ButtonIcon Component applies icon on the right when side is set to "right" 1`] = `
+<button
+  className="btn gap-2  flex-row-reverse"
+  type="button"
+>
+  <span>
+    🚀
+  </span>
+  Click me
+</button>
+`;
+
+exports[`ButtonIcon Component renders correctly with default props 1`] = `
+<button
+  className="btn gap-2  flex-row"
+  type="button"
+>
+  Click me
+</button>
+`;
