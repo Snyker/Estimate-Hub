@@ -22,12 +22,13 @@ import {Button} from "@/app/_ui/buttons/Button";
 export default function Projects() {
 
     const drawer = createDrawer("drawer-project");
+    const navigation = useRouter();
 
     return (
         <>
             <CardList>
                 <CardAdd title={"Créer un projet"} onClick={drawer.openDrawer} />
-                <Card>
+                <Card onClick={() => navigation.push('/app/projects/859-89-898')}>
                     <CardBody>
                         <CardHeader>
                             <FaCubes size={36}/>

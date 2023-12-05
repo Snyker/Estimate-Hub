@@ -1,4 +1,4 @@
-import React, {HTMLAttributes} from "react";
+import React, {cloneElement, HTMLAttributes} from "react";
 import {MdCategory} from "react-icons/md";
 import {FaHourglass, FaMoneyBill1Wave} from "react-icons/fa6";
 import {FaListAlt} from "react-icons/fa";
@@ -17,10 +17,22 @@ export type TextInfosProps = HTMLAttributes<HTMLDivElement> & {
     icon?: React.ReactElement;
     quantity?: string | number;
     text?: string;
+    animate?: boolean;
 }
 
-export type QuantityInfosProps = Pick<TextInfosProps, "quantity">;
+export type QuantityInfosProps = Omit<TextInfosProps, "text" | "icon">;
 
+export const ItemInfos: React.FC<TextInfosProps> = ({ className = '', animate = false,  quantity=0, icon=null,text, ...props}) => {
+    return (
+        <div className={`flex flex-row gap-1.5 text-sm border-t border-t-content3 py-3 px-2 justify-between items-center ${animate && 'cursor-pointer group hover:bg-backgroundSecondary active:bg-backgroundPrimary'} ${className}`} {...props}>
+            { text && <span className={`text-content1 ${animate && 'transition ease-in-out group-hover:translate-x-1'}`}>{text}</span>}
+            {
+                icon ? cloneElement(icon, { size: 18 }) : quantity != null &&
+                    <span className={'text-primary'}>{quantity}</span>
+            }
+        </div>
+    );
+};
 export const TaskInfos: React.FC<QuantityInfosProps> = (props) => {
     return (
         <TextInfos icon={<FaListAlt />} text={"Tâches"} {...props} />
