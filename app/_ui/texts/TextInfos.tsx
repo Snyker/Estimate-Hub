@@ -27,7 +27,7 @@ export const ItemInfos: React.FC<TextInfosProps> = ({ className = '', animate = 
         <div className={`flex flex-row gap-1.5 text-sm border-t border-t-content3 py-3 px-2 justify-between items-center ${animate && 'cursor-pointer group hover:bg-backgroundSecondary active:bg-backgroundPrimary'} ${className}`} {...props}>
             { text && <span className={`text-content1 ${animate && 'transition ease-in-out group-hover:translate-x-1'}`}>{text}</span>}
             {
-                icon ? cloneElement(icon, { size: 18 }) : quantity != null &&
+                icon ? cloneElement(icon, { size: 18, className: `${icon.props.className} group-hover:-translate-x-1 transition ease-in-out` }) : quantity != null &&
                     <span className={'text-primary'}>{quantity}</span>
             }
         </div>

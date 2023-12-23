@@ -7,7 +7,7 @@ import {MdDelete, MdDownload, MdEdit, MdEmail, MdLink} from "react-icons/md";
 export default function Projects() {
     return (
         <div className={`flex flex-wrap flex-row md:flex-nowrap w-full items-start gap-4`}>
-            <div className={'basis-1/5 flex flex-col gap-2.5'}>
+            <div className={'basis-1/5 flex flex-col gap-4'}>
                 <Card className={`basis-1/5`} animate={false}>
                     <CardBody>
                         <CardHeader>
@@ -35,14 +35,22 @@ export default function Projects() {
                     </CardBody>
                 </Card>
             </div>
-
-            <Card className={`basis-3/5`} animate={false}>
-                <CardBody>
-                    <CardHeader>
-                        <h4>Détails</h4>
-                    </CardHeader>
-                </CardBody>
-            </Card>
+            <div className={'basis-3/5 flex flex-col gap-4'}>
+                <Card animate={false}>
+                    <CardBody>
+                        <CardHeader>
+                            <h4>Détails</h4>
+                        </CardHeader>
+                    </CardBody>
+                </Card>
+                <Card animate={false}>
+                    <CardBody>
+                        <CardHeader>
+                            <h4>Diagramme de Gantt</h4>
+                        </CardHeader>
+                    </CardBody>
+                </Card>
+            </div>
             <Card className={`basis-1/5`} animate={false}>
                 <CardBody>
                     <CardHeader>
