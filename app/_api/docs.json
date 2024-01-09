@@ -1,0 +1,2224 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1/users": {
+      "post": {
+        "operationId": "UsersController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "UsersController_findAll",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "filters",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "operationId": "UsersController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "UsersController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "UsersController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/files/upload": {
+      "post": {
+        "operationId": "FilesController_uploadFile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Files"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/email/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthEmailLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseType"
+                }
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 422
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            },
+                            {
+                              "type": "string",
+                              "example": "needLoginViaProvider:$1",
+                              "enum": [
+                                "email",
+                                "facebook",
+                                "google",
+                                "twitter",
+                                "apple"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "example": "emailNotExists"
+                            }
+                          ]
+                        },
+                        "password": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "incorrectPassword"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "errors"
+                  ]
+                }
+              }
+            },
+            "description": "Si les identifiants n'ont pas de data"
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/email/register": {
+      "post": {
+        "operationId": "AuthController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRegisterLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/email/confirm": {
+      "post": {
+        "operationId": "AuthController_confirmEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthConfirmEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/forgot/password": {
+      "post": {
+        "operationId": "AuthController_forgotPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthForgotPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/reset/password": {
+      "post": {
+        "operationId": "AuthController_resetPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthResetPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "AuthController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "AuthController_delete",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refresh",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "AuthController_logout",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/facebook/login": {
+      "post": {
+        "operationId": "AuthFacebookController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthFacebookLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/google/login": {
+      "post": {
+        "operationId": "AuthGoogleController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthGoogleLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/twitter/login": {
+      "post": {
+        "operationId": "AuthTwitterController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthTwitterLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/apple/login": {
+      "post": {
+        "operationId": "AuthAppleController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthAppleLoginDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "operationId": "HomeController_appInfo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Home"
+        ]
+      }
+    },
+    "/api/v1/projects": {
+      "post": {
+        "operationId": "ProjectsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Projects"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "ProjectsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Projects"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{id}": {
+      "get": {
+        "operationId": "ProjectsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Projects"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "ProjectsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Projects"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "ProjectsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Projects"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/features": {
+      "post": {
+        "operationId": "FeaturesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeatureDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Features"
+        ]
+      },
+      "get": {
+        "operationId": "FeaturesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Feature"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Features"
+        ]
+      }
+    },
+    "/api/v1/features/{id}": {
+      "get": {
+        "operationId": "FeaturesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Features"
+        ]
+      },
+      "patch": {
+        "operationId": "FeaturesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFeatureDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feature"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Features"
+        ]
+      },
+      "delete": {
+        "operationId": "FeaturesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Features"
+        ]
+      }
+    },
+    "/api/v1/elements": {
+      "post": {
+        "operationId": "ElementsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateElementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 422
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "currency": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        },
+                        "period": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        },
+                        "user": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        },
+                        "project": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        },
+                        "feature": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "errors"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      }
+    },
+    "/api/v1/elements/user/{id}": {
+      "get": {
+        "operationId": "ElementsController_findAllByUser",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Element"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      }
+    },
+    "/api/v1/elements/project/{id}": {
+      "get": {
+        "operationId": "ElementsController_findAllByProject",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Element"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      }
+    },
+    "/api/v1/elements/feature/{id}": {
+      "get": {
+        "operationId": "ElementsController_findAllByFeature",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Element"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "number",
+                      "example": 422
+                    },
+                    "errors": {
+                      "type": "object",
+                      "properties": {
+                        "feature": {
+                          "oneOf": [
+                            {
+                              "type": "string",
+                              "example": "notFound"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "errors"
+                  ]
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      }
+    },
+    "/api/v1/elements/{id}": {
+      "get": {
+        "operationId": "ElementsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      },
+      "patch": {
+        "operationId": "ElementsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateElementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Element"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      },
+      "delete": {
+        "operationId": "ElementsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Elements"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "API",
+    "description": "API docs",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "responses": {
+      "404": {
+        "description": "L'element n'a pas été trouvé",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "number",
+                  "example": 404
+                },
+                "field": {
+                  "type": "string",
+                  "example": "userNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "L'element n'a pas pu être crée",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "number",
+                  "example": 404
+                },
+                "field": {
+                  "type": "string",
+                  "example": "userNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "FileEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "cbcfa8b8-3a25-4adb-a9c6-e325f0d0f3ae"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Admin"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "Active"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "object",
+            "example": "test1@example.com"
+          },
+          "password": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "object",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "object",
+            "example": "Doe"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/FileEntity"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "firstName",
+          "lastName",
+          "photo",
+          "role",
+          "status"
+        ]
+      },
+      "UpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "object",
+            "example": "test1@example.com"
+          },
+          "password": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "object",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "object",
+            "example": "Doe"
+          },
+          "photo": {
+            "$ref": "#/components/schemas/FileEntity"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          }
+        }
+      },
+      "AuthEmailLoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test1@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "azertyuiop"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {}
+      },
+      "LoginResponseType": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token utilisateur"
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "tokenExpires": {
+            "type": "number"
+          },
+          "user": {
+            "description": "Données utilisateur",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ]
+          }
+        },
+        "required": [
+          "token",
+          "user"
+        ]
+      },
+      "AuthRegisterLoginDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "test1@example.com"
+          },
+          "password": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "firstName",
+          "lastName"
+        ]
+      },
+      "AuthConfirmEmailDto": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hash"
+        ]
+      },
+      "AuthForgotPasswordDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "AuthResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "password",
+          "hash"
+        ]
+      },
+      "AuthUpdateDto": {
+        "type": "object",
+        "properties": {
+          "photo": {
+            "$ref": "#/components/schemas/FileEntity"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "password": {
+            "type": "string"
+          },
+          "oldPassword": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "photo",
+          "firstName",
+          "lastName",
+          "password",
+          "oldPassword"
+        ]
+      },
+      "AuthFacebookLoginDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "abc"
+          }
+        },
+        "required": [
+          "accessToken"
+        ]
+      },
+      "AuthGoogleLoginDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string",
+            "example": "abc"
+          }
+        },
+        "required": [
+          "idToken"
+        ]
+      },
+      "AuthTwitterLoginDto": {
+        "type": "object",
+        "properties": {
+          "accessTokenKey": {
+            "type": "string",
+            "example": "abc"
+          },
+          "accessTokenSecret": {
+            "type": "string",
+            "example": "abc"
+          }
+        },
+        "required": [
+          "accessTokenKey",
+          "accessTokenSecret"
+        ]
+      },
+      "AuthAppleLoginDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string",
+            "example": "abc"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idToken"
+        ]
+      },
+      "CreateProjectDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 90,
+            "example": "Test",
+            "description": "Nom du projet"
+          },
+          "summary": {
+            "type": "string",
+            "example": "Lorem ipsum...",
+            "description": "Résumé du projet"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "elements": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateElementDto"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "features": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateFeatureDto"
+                }
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "summary",
+          "currencyId",
+          "periodId",
+          "elements",
+          "features"
+        ]
+      },
+      "Currencies": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": "1"
+          },
+          "name": {
+            "type": "string",
+            "example": "euro",
+            "maxLength": 20
+          },
+          "symbol": {
+            "type": "string",
+            "example": "€",
+            "maxLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "symbol"
+        ]
+      },
+      "Periods": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "hour"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      },
+      "Element": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "ID de l'élement"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "example": "Element"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum"
+          },
+          "period": {
+            "$ref": "#/components/schemas/Periods"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Currencies"
+          },
+          "estimatedTime": {
+            "type": "number",
+            "minimum": 0,
+            "example": 10
+          },
+          "estimatedAmount": {
+            "type": "number",
+            "minimum": 0,
+            "example": 10
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de création"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de mise à jour"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "period",
+          "currency",
+          "estimatedTime",
+          "estimatedAmount",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "Feature": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "ID de la feature"
+          },
+          "name": {
+            "type": "string",
+            "example": "Ma fonctionnalité",
+            "description": "Nom de la feature",
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum",
+            "description": "Description de la feature"
+          },
+          "period": {
+            "description": "Période de la feature",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Periods"
+              }
+            ]
+          },
+          "currency": {
+            "description": "Monnaie de la feature",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Currencies"
+              }
+            ]
+          },
+          "estimatedTime": {
+            "type": "number",
+            "minimum": 0,
+            "example": 5,
+            "description": "Temps estimé en fonction des elements"
+          },
+          "estimatedAmount": {
+            "type": "number",
+            "minimum": 0,
+            "example": 5,
+            "description": "Coûts estimé en fonction des elements"
+          },
+          "elements": {
+            "description": "Liste des élèments associés à la feature",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Element"
+            }
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de création"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de mise à jour"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "period",
+          "currency",
+          "estimatedTime",
+          "estimatedAmount",
+          "elements",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "ID du projet"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 90,
+            "example": "Test",
+            "description": "Nom du projet"
+          },
+          "summary": {
+            "type": "string",
+            "example": "Lorem ipsum...",
+            "description": "Résumé du projet"
+          },
+          "currency": {
+            "description": "Format de Monnaie et d'utilisation dans le projet",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Currencies"
+              }
+            ]
+          },
+          "period": {
+            "description": "Format temporel d'utilisation dans le projet",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Periods"
+              }
+            ]
+          },
+          "total": {
+            "type": "number",
+            "minimum": 0,
+            "example": 13.5,
+            "description": "Calcul total des items du projet en brut"
+          },
+          "netTotal": {
+            "type": "number",
+            "minimum": 0,
+            "example": 13.5,
+            "description": "Calcul total des items du projet en net"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 0,
+            "example": 15,
+            "description": "Temps estimé total du projet"
+          },
+          "elements": {
+            "description": "Liste des éléments",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Element"
+            }
+          },
+          "features": {
+            "description": "Liste des fonctionnalités",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Feature"
+            }
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de création"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "description": "Date de mise à jour"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "summary",
+          "currency",
+          "period",
+          "total",
+          "netTotal",
+          "duration",
+          "elements",
+          "features",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "UpdateProjectDto": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "example": "Lorem ipsum...",
+            "description": "Résumé du projet"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "elements": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateElementDto"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "features": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateFeatureDto"
+                }
+              ]
+            },
+            "type": "array"
+          }
+        }
+      },
+      "CreateFeatureDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Ma fonctionnalité",
+            "description": "Nom de la feature",
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum",
+            "description": "Description de la feature"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "elements": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateElementDto"
+                }
+              ]
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "currencyId",
+          "periodId",
+          "elements"
+        ]
+      },
+      "UpdateFeatureDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Ma fonctionnalité",
+            "description": "Nom de la feature",
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum",
+            "description": "Description de la feature"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "elements": {
+            "items": {
+              "oneOf": [
+                {
+                  "type": "number",
+                  "example": 1
+                },
+                {
+                  "$ref": "#/components/schemas/CreateElementDto"
+                }
+              ]
+            },
+            "type": "array"
+          }
+        }
+      },
+      "CreateElementDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "example": "Element"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "estimatedTime": {
+            "type": "number",
+            "example": 5,
+            "minimum": 0,
+            "description": "Le temps estimé selon la période"
+          },
+          "estimatedAmount": {
+            "type": "number",
+            "example": 5,
+            "minimum": 0,
+            "description": "Le coût estimé selon la monnaie"
+          },
+          "userId": {
+            "type": "number",
+            "example": 1,
+            "description": "ID de l'utilisateur"
+          },
+          "projectId": {
+            "type": "number"
+          },
+          "featureId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "currencyId",
+          "periodId",
+          "estimatedTime",
+          "estimatedAmount"
+        ]
+      },
+      "UpdateElementDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "example": "Element"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Lorem ipsum"
+          },
+          "currencyId": {
+            "type": "number",
+            "description": "ID de la monnaie",
+            "example": 2
+          },
+          "periodId": {
+            "type": "number",
+            "description": "ID de la periode",
+            "example": 2
+          },
+          "estimatedTime": {
+            "type": "number",
+            "example": 5,
+            "minimum": 0,
+            "description": "Le temps estimé selon la période"
+          },
+          "estimatedAmount": {
+            "type": "number",
+            "example": 5,
+            "minimum": 0,
+            "description": "Le coût estimé selon la monnaie"
+          },
+          "userId": {
+            "type": "number",
+            "example": 1,
+            "description": "ID de l'utilisateur"
+          },
+          "projectId": {
+            "type": "number"
+          },
+          "featureId": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
